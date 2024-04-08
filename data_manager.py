@@ -2,6 +2,7 @@ import requests
 import os
 
 SHEETY_PRICES_ENDPOINT = os.environ.get("SHEETY_PRICES_ENDPOINT")
+SHEETY_USERS_ENDPOINT = os.environ.get("SHEETY_USERS_ENDPOINT")
 headers = {
     "Authorization": os.environ.get("AUTHORIZATION")
 }
@@ -32,3 +33,9 @@ class DataManager:
 
             print(response.text)
 
+    def get_customer_emails(self):
+        customers_endpoint = SHEETY_USERS_ENDPOINT
+        response = requests.get(url=customers_endpoint, headers=headers)
+        data = response.json()
+        self.customer_data = data["users"]
+        return self.customer_data
