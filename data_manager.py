@@ -2,6 +2,9 @@ import requests
 import os
 
 SHEETY_PRICES_ENDPOINT = os.environ.get("SHEETY_PRICES_ENDPOINT")
+headers = {
+    "Authorization": os.environ.get("AUTHORIZATION")
+}
 
 
 # This class is responsible for talking to the Google Sheet.
@@ -10,7 +13,7 @@ class DataManager:
         self.destination_data = {}
 
     def get_destination_data(self):
-        self.destination_data = requests.get(SHEETY_PRICES_ENDPOINT).json()["prices"]
+        self.destination_data = requests.get(SHEETY_PRICES_ENDPOINT, headers=headers).json()["prices"]
 
         return self.destination_data
 

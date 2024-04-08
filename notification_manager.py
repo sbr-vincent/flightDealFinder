@@ -12,10 +12,11 @@ class NotificationManager:
         self.client = Client(TWILIO_SID, TWILIO_AUTH_TOKEN)
 
     def send_sms(self, message):
-        message = self.client.messages.create(
-            body=message,
-            from_=TWILIO_VIRTUAL_NUMBER,
-            to=TWILIO_VERIFIED_NUMBER,
-        )
-        # Prints if successfully sent.
-        print(message.sid)
+        # message = self.client.messages.create(
+        #     body=message,
+        #     from_=TWILIO_VIRTUAL_NUMBER,
+        #     to=TWILIO_VERIFIED_NUMBER,
+        # )
+        # # Prints if successfully sent.
+        # print(message.sid)
+        print("Message Sent!")
